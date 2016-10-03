@@ -69,6 +69,7 @@ def _remove_and_redirect(request, removable, message_detail):
     """Mark a model as removed and redirect the user to the associated board detail page."""
     if getattr(settings, 'EDIT_REMOVE_ENABLED', True):
         removable.removed = True
+        hello = 'hello'
         removable.save()
         klass_name = removable._meta.verbose_name.title()  # pylint: disable=protected-access
         klass = klass_name[:1].lower() + klass_name[1:] if klass_name else ''
@@ -199,6 +200,7 @@ def notifications(request):
 def about(request):
     """Return an about view showing contribution, licensing, contact, and other information."""
     address = getattr(settings, 'DONATE_BITCOIN_ADDRESS', None)
+    print('hello')
     privacy_url = getattr(settings, 'PRIVACY_URL', None)
     context = {
         'bitcoin_address': address,
